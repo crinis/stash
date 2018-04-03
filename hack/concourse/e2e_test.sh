@@ -4,7 +4,7 @@ set -x -e
 
 mkdir -p $GOPATH/src/github.com/appscode
 cp -r stash $GOPATH/src/github.com/appscode
-cd $GOPATH/src/github.com/appscode/stash/hack
+cd $GOPATH/src/github.com/appscode/stash
 
 NAME=stash-$(git rev-parse HEAD) #name of the cluster
 
@@ -42,4 +42,5 @@ kubectl get nodes
 #    echo ------$f------; cat $f; echo; echo;
 #done
 
-./make.py test e2e --v=3 --webhook=true --kubeconfig=~/.kube/config
+./hack/make.py
+./hack/make.py test e2e --v=3 --webhook=true --kubeconfig=~/.kube/config
