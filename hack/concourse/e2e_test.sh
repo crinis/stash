@@ -44,4 +44,4 @@ kubectl get nodes
 
 ./hack/builddeps.sh
 ./hack/make.py
-./hack/make.py test e2e --v=3 --webhook=true --kubeconfig=/root/.kube/config
+./hack/make.py test e2e --v=3 --rbac=true --webhook=true --kubeconfig=/root/.kube/config
