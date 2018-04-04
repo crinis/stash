@@ -31,7 +31,7 @@ spec:
         - --tls-cert-file=/var/serving-cert/tls.crt
         - --tls-private-key-file=/var/serving-cert/tls.key
         - --enable-analytics=${STASH_ENABLE_ANALYTICS}
-        image: ${STASH_DOCKER_REGISTRY}/stash:0.7.0-rc.2
+        image: ${STASH_DOCKER_REGISTRY}/stash:0.7.0-rc.3
         ports:
         - containerPort: 8443
         - containerPort: 56790
@@ -115,6 +115,23 @@ metadata:
 spec:
   caBundle: ${SERVICE_SERVING_CERT_CA}
   group: admission.stash.appscode.com
+  groupPriorityMinimum: 1000
+  versionPriority: 15
+  service:
+    name: stash-operator
+    namespace: ${STASH_NAMESPACE}
+  version: v1alpha1
+---
+# register as aggregated apiserver
+apiVersion: apiregistration.k8s.io/v1beta1
+kind: APIService
+metadata:
+  name: v1alpha1.repositories.stash.appscode.com
+  labels:
+    app: stash
+spec:
+  caBundle: ${SERVICE_SERVING_CERT_CA}
+  group: repositories.stash.appscode.com
   groupPriorityMinimum: 1000
   versionPriority: 15
   service:
