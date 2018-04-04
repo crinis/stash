@@ -43,5 +43,8 @@ kubectl get nodes
 #done
 
 go get golang.org/x/tools/cmd/goimports
+go get github.com/onsi/ginkgo/ginkgo
+go get github.com/onsi/gomega/...
+
 ./hack/make.py
 ./hack/make.py test e2e --v=3 --webhook=true --kubeconfig=~/.kube/config
