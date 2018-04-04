@@ -42,5 +42,6 @@ kubectl get nodes
 #    echo ------$f------; cat $f; echo; echo;
 #done
 
+go get golang.org/x/tools/cmd/goimports
 ./hack/make.py
 ./hack/make.py test e2e --v=3 --webhook=true --kubeconfig=~/.kube/config
